@@ -6,9 +6,11 @@ out/
 .idea/codeStyles
 .idea/gradle.xml
 .idea/terminal.xml
-.idea/**
+.idea/
+.idea/**/
 target/
 
 # gradle
 .gradle/
 build/
+/.idea/
