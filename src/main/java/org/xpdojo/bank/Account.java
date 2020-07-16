@@ -7,7 +7,10 @@ public class Account {
         return balance;
     }
 
-    public long deposit (long amount) {
+    public long deposit (long amount) throws InvalidAmountDepositedException {
+        if (amount <= 0)
+            throw new InvalidAmountDepositedException();
+
         balance += amount;
         return balance;
     }
@@ -22,5 +25,7 @@ public class Account {
 }
 
 class InsufficientBalanceException extends Exception {
+}
 
+class InvalidAmountDepositedException extends Exception {
 }
