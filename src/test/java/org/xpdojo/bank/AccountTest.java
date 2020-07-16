@@ -37,6 +37,15 @@ public class AccountTest {
     }
 
     @Test
+    public void withdrawMultipleAmountsThatIsLessThanBalance() throws InsufficientBalanceException {
+        Account account = new Account();
+        account.deposit(100);
+        account.withdraw(10);
+        account.withdraw(20);
+        assertThat(account.balance()).isEqualTo(70);
+    }
+
+    @Test
     public void withdrawAmountThatIsGreaterThanBalance() {
         Account account = new Account();
         account.deposit(100);
