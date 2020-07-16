@@ -8,7 +8,7 @@ public class Account {
     }
 
     public long deposit (long amount) {
-        balance = amount;
+        balance += amount;
         return balance;
     }
 }
