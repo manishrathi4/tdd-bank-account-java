@@ -3,6 +3,7 @@ package org.xpdojo.bank;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class AccountTest {
 
@@ -28,11 +29,18 @@ public class AccountTest {
     }
 
     @Test
-    public void withdrawAmountThatIsLessThanBalance() {
+    public void withdrawAmountThatIsLessThanBalance() throws InsufficientBalanceException {
      Account account = new Account();
      account.deposit(100);
      account.withdraw(10);
      assertThat(account.balance()).isEqualTo(90);
     }
 
+    @Test
+    public void withdrawAmountThatIsGreaterThanBalance() {
+        Account account = new Account();
+        account.deposit(100);
+        assertThatExceptionOfType(InsufficientBalanceException.class)
+                .isThrownBy(() -> account.withdraw(120));
+    }
 }

@@ -12,8 +12,15 @@ public class Account {
         return balance;
     }
 
-    public long withdraw(long amount) {
+    public long withdraw(long amount) throws InsufficientBalanceException{
+        if (balance < amount)
+            throw new InsufficientBalanceException();
+
         balance -= amount;
         return balance;
     }
+}
+
+class InsufficientBalanceException extends Exception {
+
 }
