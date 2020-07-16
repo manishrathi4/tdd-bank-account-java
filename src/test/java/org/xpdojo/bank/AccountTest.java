@@ -29,6 +29,13 @@ public class AccountTest {
     }
 
     @Test
+    public void withdrawAmountFromNewAccountShouldNotBeAllowed() throws InsufficientBalanceException {
+        Account account = new Account();
+        assertThatExceptionOfType(InsufficientBalanceException.class)
+                .isThrownBy(() -> account.withdraw(100));
+    }
+
+    @Test
     public void withdrawAmountThatIsLessThanBalance() throws InsufficientBalanceException {
      Account account = new Account();
      account.deposit(100);
@@ -46,7 +53,7 @@ public class AccountTest {
     }
 
     @Test
-    public void withdrawAmountThatIsGreaterThanBalance() {
+    public void withdrawAmountThatIsGreaterThanBalanceShouldNotBeAllowed() {
         Account account = new Account();
         account.deposit(100);
         assertThatExceptionOfType(InsufficientBalanceException.class)
