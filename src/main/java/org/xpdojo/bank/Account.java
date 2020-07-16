@@ -11,4 +11,9 @@ public class Account {
         balance += amount;
         return balance;
     }
+
+    public long withdraw(long amount) {
+        balance -= amount;
+        return balance;
+    }
 }
